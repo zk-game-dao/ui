@@ -1,10 +1,12 @@
-import { createContext, memo, PropsWithChildren, useContext, useEffect } from "react";
+import { BannerProps } from 'components/banner/banner.component';
+import { createContext, memo, PropsWithChildren, useContext, useEffect } from 'react';
 
 export const Themes = ['zkpoker', 'purepoker'] as const;
 export type Theme = typeof Themes[number];
 
 export type UIConfig = {
   theme: Theme;
+  banner?: BannerProps;
 };
 
 const ConfigContext = createContext<UIConfig>({ theme: "zkpoker" });

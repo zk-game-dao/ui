@@ -27,6 +27,15 @@ export type InteractableProps = {
   eventName?: string;
 };
 
+export const IsInteractableEnabled = (
+  props: InteractableProps,
+): boolean => (
+  props.onClick !== undefined ||
+  props.href !== undefined ||
+  props.isSubmit === true ||
+  props.isOutLink === true
+);
+
 export const Interactable = memo(
   forwardRef<
     HTMLButtonElement | HTMLAnchorElement,
@@ -104,10 +113,10 @@ export const Interactable = memo(
             globalThis.MouseEvent
           >,
         ) => { },
-          // track("button-click", {
-          //   content:
-          //     eventName || (e.target as HTMLElement).textContent || "unknown",
-          // }),
+        // track("button-click", {
+        //   content:
+        //     eventName || (e.target as HTMLElement).textContent || "unknown",
+        // }),
         // [track, eventName],
         [eventName],
       );
