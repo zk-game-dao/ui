@@ -18,7 +18,7 @@ export const BannerComponent = memo<BannerProps>(({ children, ...interactable })
   return (
     <Interactable
       className={classNames(
-        "flex flex-row group justify-center items-center w-full p-4 z-100 animation-scroll-gradient-slow bg-size-[200%_100%]",
+        "flex flex-row group justify-center relative items-center w-full py-3 px-4 flex-shrink-0 z-100 overflow-hidden animation-scroll-gradient-slow bg-size-[200%_100%]",
         'bg-gradient-to-r type-button-3',
         {
           'from-primary-500 via-primary-600 to-primary-500': theme === 'zkpoker',
