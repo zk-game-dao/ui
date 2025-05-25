@@ -41,7 +41,7 @@ layer(base);
   --theme-primary-200: #ffd9a8; /* soft metallic reflection */
   --theme-primary-300: #ffc376; /* warmer metallic sheen */
   --theme-primary-400: #ffa843; /* bright polished metallic orange */
-  --theme-primary-500: #FC9300; /* vivid metallic core color */
+  --theme-primary-500: #fc9300; /* vivid metallic core color */
   --theme-primary-600: #e57700; /* metallic deeper tone */
   --theme-primary-700: #c26500; /* richer, metallic amber shadow */
   --theme-primary-800: #9c5100; /* dark metallic copper */
@@ -170,6 +170,10 @@ layer(base);
   animation: scrollGradient 2s linear infinite;
 }
 
+@utility animation-scroll-gradient-slow {
+  animation: scrollGradient 5s linear infinite;
+}
+
 @utility fade-top {
   mask-image: linear-gradient(to bottom, transparent, black 12px);
 }
@@ -293,7 +297,8 @@ layer(base);
     --line: 1px;
     --color: rgba(255, 255, 255, 0.2);
 
-    background-image: linear-gradient(
+    background-image:
+      linear-gradient(
         -90deg,
         transparent calc(var(--gap) - var(--line)),
         var(--color) calc(var(--gap) - var(--line) + 1px),

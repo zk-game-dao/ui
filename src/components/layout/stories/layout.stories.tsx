@@ -34,10 +34,10 @@ const meta: Meta<Props> = {
       return (
         <ProvideUI
           theme={globals.theme}
-          banner={{
-            children: args.banner && <p>This is an example banner 😳</p>,
-            href: '#',
-          }}
+          banner={args.banner ? {
+            children: <p>This is an example banner 😳</p>,
+            onClick: () => alert('Banner clicked!'),
+          } : undefined}
         >
           <Story />
         </ProvideUI>
