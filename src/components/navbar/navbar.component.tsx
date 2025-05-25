@@ -60,7 +60,7 @@ export const NavbarComponent = memo<NavbarComponentProps>(({ hideUser }) => {
 
   return (
     <>
-      <nav className={classNames("flex flex-col w-full z-40 fixed left-0 top-0 px-4 pt-[var(--navbar-space-top)]")}>
+      <nav className={classNames("flex flex-col w-full z-40 sticky left-0 top-0 px-4 pt-[var(--navbar-space-top)]")}>
         <div
           className={classNames(
             "ease container ease-in-out transition-[max-width] duration-[750ms] relative z-[1] p-0",
