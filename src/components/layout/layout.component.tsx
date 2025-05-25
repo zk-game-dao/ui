@@ -12,6 +12,8 @@ import {
 
 import { HeroComponent, HeroComponentProps } from '../hero/hero.component';
 import NavbarComponent, { NavbarComponentProps } from '../navbar/navbar.component';
+import { BannerComponent } from 'components/banner/banner.component';
+import { useConfig } from 'context/config.context';
 
 type LayoutProps = {
   navbar?: NavbarComponentProps;
@@ -71,6 +73,7 @@ export const LayoutProvider = memo<PropsWithChildren>(({ children }) => {
   const [overrides, setOverrides] = useState<{
     [id: string]: LayoutOverride<LayoutProps, NestedPaths<LayoutProps>>;
   }>({});
+  const { banner } = useConfig();
 
   const {
     navbar,
@@ -125,6 +128,7 @@ export const LayoutProvider = memo<PropsWithChildren>(({ children }) => {
         },
       }}
     >
+      {!isFullScreen && banner && <BannerComponent {...banner} />}
       <NavbarComponent {...navbar} />
       <Suspense fallback={<LoadingAnimationComponent className="m-auto" />}>
         <main
