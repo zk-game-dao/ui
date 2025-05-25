@@ -1,19 +1,34 @@
-import Interactable, { InteractableProps, IsInteractableEnabled } from "components/interactable.component";
-import { memo, PropsWithChildren, ReactNode } from "react";
+import classNames from 'classnames';
+import Interactable, {
+  InteractableProps, IsInteractableEnabled
+} from 'components/interactable.component';
+import { useConfig } from 'context/config.context';
+import { memo, ReactNode } from 'react';
 
-import ChevRight from "./chevron-right-grey-small.svg";
+import ChevRight from './chevron-right-grey-small.svg';
 
 export type BannerProps = {
   children: ReactNode;
 } & Omit<InteractableProps, 'style' | 'className'>;
 
 export const BannerComponent = memo<BannerProps>(({ children, ...interactable }) => {
+
+  const { theme } = useConfig();
+
   return (
-    <div className="w-full bg-linear-to-t to-primary-950 to-[4px] from-primary-transparent p-4 z-100 type-caption">
-      <Interactable className="flex flex-row justify-center items-center container w-full group cursor-pointer">
-        {children}
-        {IsInteractableEnabled(interactable) && <img src={ChevRight} className="ml-2 transition-transform group-hover:translate-x-1" />}
-      </Interactable>
-    </div>
-  );
+    <Interactable
+      className={classNames(
+        "flex flex-row group justify-center relative items-center w-full py-3 px-4 flex-shrink-0 z-100 overflow-hidden animation-scroll-gradient-slow bg-size-[200%_100%]",
+        'bg-gradient-to-r type-button-3',
+        {
+          'from-primary-500 via-primary-600 to-primary-500': theme === 'zkpoker',
+          'from-primary-500 via-primary-700 to-primary-500': theme === 'purepoker',
+        },
+      )}
+      {...interactable}
+    >
+      {children}
+      {IsInteractableEnabled(interactable) && <img src={ChevRight} className="ml-2 transition-transform group-hover:translate-x-1" />}
+    </Interactable>
+  )
 });
