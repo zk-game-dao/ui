@@ -6,6 +6,7 @@ import { LayoutComponent, LayoutProvider, ProvideLayoutConfig } from '../layout.
 type Props = {
   footer?: boolean;
   banner?: boolean;
+  fullScreen?: boolean;
 }
 
 const meta: Meta<Props> = {
@@ -15,6 +16,7 @@ const meta: Meta<Props> = {
       <ProvideLayoutConfig
         navbarTabs={[]}
         footerLinks={[]}
+        isOverlay={args.fullScreen}
         NavbarUserComponent={() => <>User</>}
       >
         <LayoutProvider>
@@ -46,6 +48,7 @@ const meta: Meta<Props> = {
   ],
   args: {
     footer: true,
+    fullScreen: false,
   },
   parameters: {
     layout: 'fullscreen',
@@ -58,4 +61,7 @@ type Story = StoryObj<Props>;
 export const Default: Story = {};
 export const WithBanner: Story = {
   args: { banner: true }
+};
+export const WithBannerFullScreen: Story = {
+  args: { banner: true, fullScreen: true }
 };
