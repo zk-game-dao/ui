@@ -49,7 +49,7 @@ export type NavbarComponentProps = {
 };
 
 export const NavbarComponent = memo<NavbarComponentProps>(({ hideUser }) => {
-  const { container } = useLayout();
+  const { container, isFullScreen } = useLayout();
   const { pathname } = useLocation();
   const [showDroppel, setShowDroppel] = useState(false);
 
@@ -60,7 +60,10 @@ export const NavbarComponent = memo<NavbarComponentProps>(({ hideUser }) => {
 
   return (
     <>
-      <nav className={classNames("flex flex-col w-full z-40 sticky left-0 top-0 px-4 pt-[var(--navbar-space-top)]")}>
+      <nav className={classNames(
+        "flex flex-col w-full z-40 left-0 top-0 px-4 pt-[var(--navbar-space-top)]",
+        isFullScreen || isOverlay ? 'fixed' : 'sticky'
+      )}> 
         <div
           className={classNames(
             "ease container ease-in-out transition-[max-width] duration-[750ms] relative z-[1] p-0",
