@@ -69,6 +69,7 @@ export const useLayout = () => useContext(LayoutContext).props;
 
 export const LayoutProvider = memo<PropsWithChildren>(({ children }) => {
   const [_globalLayout, setLayout] = useState<LayoutProps>({});
+  const globalLayout = useLayoutConfig();
 
   const [overrides, setOverrides] = useState<{
     [id: string]: LayoutOverride<LayoutProps, NestedPaths<LayoutProps>>;
@@ -128,7 +129,7 @@ export const LayoutProvider = memo<PropsWithChildren>(({ children }) => {
         },
       }}
     >
-      {!isFullScreen && banner && <BannerComponent {...banner} />}
+      {!isFullScreen && !globalLayout.isOverlay && banner && <BannerComponent {...banner} />}
       <NavbarComponent {...navbar} />
       <Suspense fallback={<LoadingAnimationComponent className="m-auto" />}>
         <main
