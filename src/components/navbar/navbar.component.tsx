@@ -61,7 +61,7 @@ export const NavbarComponent = memo<NavbarComponentProps>(({ hideUser }) => {
   return (
     <>
       <nav className={classNames(
-        "flex flex-col w-full z-40 left-0 top-0 px-4 pt-[var(--navbar-space-top)]",
+        "flex flex-col w-full z-40 left-0 top-0 px-4 py-[var(--navbar-space-top)]",
         isFullScreen || isOverlay ? 'fixed' : 'sticky'
       )}> 
         <div
@@ -140,7 +140,6 @@ export const NavbarComponent = memo<NavbarComponentProps>(({ hideUser }) => {
           </>
         )}
       </nav>
-      {!isOverlay && <div className="h-[var(--navbar-height)]" />}
     </>
   );
 },

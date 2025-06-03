@@ -9,7 +9,8 @@ export const LoadingAnimationComponent = memo<{
   children?: ReactNode;
   className?: string;
   variant?: "spinner" | "shimmer";
-}>(({ children, className, variant = "spinner" }) => (
+  hideDots?: boolean;
+}>(({ children, className, variant = "spinner", hideDots = false }) => (
   <LazyMotion features={domAnimation}>
     <m.div
       variants={{
@@ -31,7 +32,7 @@ export const LoadingAnimationComponent = memo<{
             "text-animation-shimmer": variant === "shimmer",
           })}
         >
-          {children}...
+          {children}{!hideDots && <>...</>}
         </div>
       )}
     </m.div>
