@@ -85,7 +85,7 @@ export const NumberInputComponent = memo<NumberInputProps>(
         className={className}
         quickActions={quickActions}
       >
-        <div className="flex flex-row w-full h-full justify-start items-center">
+        <div className="flex flex-row w-full h-full justify-end items-center">
           <RawNumberInputComponent
             ref={inputRef}
             value={_value}
