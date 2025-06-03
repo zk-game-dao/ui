@@ -48,3 +48,31 @@ export const InList: Story = {
       )
     ]
 };
+
+export const MinMaxInList: Story = {
+  decorators: [
+    (Story) => (
+      <List>
+        <Story />
+      </List>
+    )
+  ],
+  args: {
+    min: 0,
+    max: 99,
+    step: 1,
+  }
+}
+
+export const WithSymbolInList: Story = {
+  decorators: [
+    (Story) => (
+      <List>
+        <Story />
+      </List>
+    )
+  ],
+  args: {
+    symbol: 'USD',
+  }
+}
