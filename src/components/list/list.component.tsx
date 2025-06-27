@@ -15,6 +15,7 @@ import {
 import { useRouting } from "../../hooks/routing";
 import { Label, LabelProps } from "../label.component";
 import { Modal, ModalProps } from "../modal/modal";
+import { useConfig } from "../../context/config.context";
 
 type ListVariant =
   | {
@@ -70,6 +71,7 @@ const RenderedListItem = memo<
 >(({ first, last, openSublist, ...props }) => {
   const { variant } = useContext(ListContext);
   const { push } = useRouting();
+  const { theme } = useConfig();
   let bg = 'bg-material-main-1';
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -104,6 +106,7 @@ const RenderedListItem = memo<
       );
       const cell = classNames(
         cellBg,
+        { 'backdrop-blur-sm': theme === 'purepoker' },
         variant.type === "default" &&
         (!last ? "border-material-main-1" : "border-transparent"),
       );
